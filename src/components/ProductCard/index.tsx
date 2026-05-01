@@ -3,7 +3,7 @@ import type { ProductCardProps } from './productCard.type';
 import QuantityControl from '../QuantityControl';
 import useBuyNow from 'src/hooks/useBuyNow';
 
-function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product }: ProductCardProps) {
   const { buyNow } = useBuyNow();
 
   return (
@@ -54,5 +54,3 @@ function ProductCard({ product }: ProductCardProps) {
     </article>
   );
 }
-
-export default ProductCard;

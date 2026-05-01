@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import useCart from 'src/hooks/useCart';
 import type { Product } from 'src/types/product.type';
 
-function useBuyNow() {
+export default function useBuyNow() {
   const navigate = useNavigate();
 
   const { addToCart, getProductQuantity } = useCart();
@@ -22,5 +22,3 @@ function useBuyNow() {
     buyNow,
   };
 }
-
-export default useBuyNow;

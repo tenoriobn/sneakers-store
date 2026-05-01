@@ -10,7 +10,7 @@ const INITIAL_FILTERS: ProductFilters = {
   limit: 12,
 };
 
-function useProducts() {
+export default function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [pages, setPages] = useState(1);
@@ -74,5 +74,3 @@ function useProducts() {
     changePage,
   };
 }
-
-export default useProducts;

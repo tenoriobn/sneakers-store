@@ -1,11 +1,11 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 
-import BaseLayout from "src/layouts/BaseLayout";
-import Home from "src/pages/Home";
-import ProductDetail from "src/pages/ProductDetail";
-import Cart from "src/pages/Cart";
+import BaseLayout from 'src/layouts/BaseLayout';
+import Home from 'src/pages/Home';
+import ProductDetail from 'src/pages/ProductDetail';
+import Cart from 'src/pages/Cart';
 
-function RoutesProvider() {
+export default function RoutesProvider() {
   return (
     <Routes>
       <Route element={<BaseLayout />}>
@@ -16,5 +16,3 @@ function RoutesProvider() {
     </Routes>
   );
 }
-
-export default RoutesProvider;

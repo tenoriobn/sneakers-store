@@ -1,44 +1,32 @@
-import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import ProductDetailInfo from 'src/components/ProductDetailInfo';
+import RelatedProducts from 'src/components/RelatedProducts';
+import { getProductById, getRelatedProducts } from 'src/services/productService';
+import type { Product } from 'src/types/product.type';
 
-import ProductDetailInfo from "src/components/ProductDetailInfo";
-import RelatedProducts from "src/components/RelatedProducts";
-import {
-  getProductById,
-  getRelatedProducts,
-} from "src/services/productService";
-
-import type { Product } from "src/types/product.type";
-
-function ProductDetail() {
+export default function ProductDetail() {
   const { id } = useParams();
-
   const [product, setProduct] = useState<Product | null>(null);
-
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
-
   const [isLoading, setIsLoading] = useState(true);
-
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   useEffect(() => {
     async function loadProduct() {
       try {
         setIsLoading(true);
-        setError("");
+        setError('');
 
         const foundProduct = await getProductById(id as string);
 
         setProduct(foundProduct);
 
-        const related = await getRelatedProducts(
-          foundProduct.category,
-          foundProduct.id,
-        );
+        const related = await getRelatedProducts(foundProduct.category, foundProduct.id);
 
         setRelatedProducts(related);
       } catch {
-        setError("Produto não encontrado.");
+        setError('Produto não encontrado.');
       } finally {
         setIsLoading(false);
       }
@@ -51,40 +39,62 @@ function ProductDetail() {
 
   if (isLoading) {
     return (
-      <div className="py-20 text-center text-lg text-zinc-500">
+      <section
+        className="py-20 text-center text-lg text-zinc-500"
+        role="status"
+        aria-live="polite"
+        aria-busy="true"
+      >
         Carregando produto...
-      </div>
+      </section>
     );
   }
 
   if (error || !product) {
     return (
-      <div className="rounded-2xl border border-red-200 bg-red-50 px-6 py-10 text-center text-red-700">
+      <section
+        className="rounded-2xl border border-red-200 bg-red-50 px-6 py-10 text-center text-red-700"
+        role="alert"
+        aria-live="assertive"
+      >
         {error}
-      </div>
+      </section>
     );
   }
 
   return (
-    <>
-      <nav
-        className="mb-10 flex items-center gap-2 text-sm text-zinc-500"
-        aria-label="Breadcrumb"
-      >
-        <Link to="/" className="hover:text-zinc-900">
-          Home
-        </Link>
+    <main>
+      <nav className="mb-10 flex items-center gap-2 text-sm text-zinc-500" aria-label="Breadcrumb">
+        <ol className="flex items-center gap-2">
+          <li>
+            <Link to="/" className="hover:text-zinc-900">
+              Home
+            </Link>
+          </li>
 
-        <span>/</span>
+          <li aria-hidden="true">/</li>
 
-        <span className="text-zinc-900">{product.name}</span>
+          <li aria-current="page" className="text-zinc-900">
+            {product.name}
+          </li>
+        </ol>
       </nav>
 
-      <ProductDetailInfo product={product} />
+      <section aria-labelledby="product-detail">
+        <h1 id="product-detail" className="sr-only">
+          Detalhes do produto {product.name}
+        </h1>
 
-      <RelatedProducts products={relatedProducts} />
-    </>
+        <ProductDetailInfo product={product} />
+      </section>
+
+      <section aria-labelledby="related-products">
+        <h2 id="related-products" className="sr-only">
+          Produtos relacionados
+        </h2>
+
+        <RelatedProducts products={relatedProducts} />
+      </section>
+    </main>
   );
 }
-
-export default ProductDetail;

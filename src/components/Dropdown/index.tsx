@@ -1,21 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState, useId } from 'react';
 import Arrow from 'src/assets/icons/arrow.svg?react';
 import Check from 'src/assets/icons/check.svg?react';
 import type { DropdownProps } from './dropdown.type';
+import { useClickOutside } from './useClickOutside';
 
 export default function Dropdown({ icon, value, placeholder, options, onChange }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
+  const listboxId = useId();
 
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+  useClickOutside(ref, () => setIsOpen(false));
 
   const currentLabel = options.find((o) => o.value === value)?.label || placeholder;
 
@@ -28,6 +22,9 @@ export default function Dropdown({ icon, value, placeholder, options, onChange }
     <div className="relative" ref={ref}>
       <button
         type="button"
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        aria-controls={listboxId}
         onClick={() => setIsOpen(!isOpen)}
         className={`flex h-12 w-full items-center justify-between rounded-xl border bg-white px-4 shadow-sm transition-all ${
           isOpen
@@ -35,32 +32,43 @@ export default function Dropdown({ icon, value, placeholder, options, onChange }
             : 'border-zinc-200 hover:border-zinc-300'
         }`}
       >
-        <div className="flex items-center gap-3">
+        <span className="flex items-center gap-3">
           <span className={isOpen ? 'text-orange-400' : 'text-zinc-400'}>{icon}</span>
           <span className="truncate text-zinc-700">{currentLabel}</span>
-        </div>
+        </span>
+
         <Arrow
-          className={`text-zinc-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+          aria-hidden="true"
+          className={`text-zinc-400 transition-transform duration-300 ${
+            isOpen ? 'rotate-180' : ''
+          }`}
         />
       </button>
 
       {isOpen && (
-        <div className="animate-in fade-in zoom-in absolute z-50 mt-2 w-full rounded-xl border border-zinc-100 bg-white py-2 shadow-xl duration-200">
+        <ul
+          id={listboxId}
+          role="listbox"
+          className="animate-in fade-in zoom-in absolute z-50 mt-2 w-full rounded-xl border border-zinc-100 bg-white py-2 shadow-xl duration-200"
+        >
           {options.map((opt) => (
-            <button
-              key={opt.value}
-              onClick={() => select(opt.value)}
-              className="group flex w-full items-center justify-between px-4 py-2 text-left text-sm hover:bg-zinc-50"
-            >
-              <span
-                className={value === opt.value ? 'font-medium text-orange-500' : 'text-zinc-600'}
+            <li key={opt.value} role="option" aria-selected={value === opt.value}>
+              <button
+                type="button"
+                onClick={() => select(opt.value)}
+                className="group flex w-full items-center justify-between px-4 py-2 text-left text-sm hover:bg-zinc-50"
               >
-                {opt.label}
-              </span>
-              {value === opt.value && <Check className="text-orange-500" />}
-            </button>
+                <span
+                  className={value === opt.value ? 'font-medium text-orange-500' : 'text-zinc-600'}
+                >
+                  {opt.label}
+                </span>
+
+                {value === opt.value && <Check aria-hidden="true" className="text-orange-500" />}
+              </button>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   );
