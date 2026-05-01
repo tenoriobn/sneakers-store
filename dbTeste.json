@@ -1,0 +1,76 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Tênis Urban Runner",
+      "category": "Tênis",
+      "price": 299.9,
+      "image": "/images/product-1.png",
+      "description": "Tênis leve e confortável para uso diário."
+    },
+    {
+      "id": "2",
+      "name": "Camiseta Essential",
+      "category": "Roupas",
+      "price": 89.9,
+      "image": "/images/product-2.png",
+      "description": "Camiseta premium em algodão macio."
+    },
+    {
+      "id": "3",
+      "name": "Mochila Tech",
+      "category": "Acessórios",
+      "price": 199.9,
+      "image": "/images/product-3.png",
+      "description": "Mochila moderna com compartimento notebook."
+    },
+    {
+      "id": "4",
+      "name": "Tênis Street Max",
+      "category": "Tênis",
+      "price": 349.9,
+      "image": "/images/product-4.png",
+      "description": "Visual urbano com alta durabilidade."
+    },
+    {
+      "id": "5",
+      "name": "Jaqueta Wind",
+      "category": "Roupas",
+      "price": 249.9,
+      "image": "/images/product-5.png",
+      "description": "Leve, resistente e confortável."
+    },
+    {
+      "id": "6",
+      "name": "Boné Classic",
+      "category": "Acessórios",
+      "price": 59.9,
+      "image": "/images/product-6.png",
+      "description": "Design minimalista e ajuste confortável."
+    },
+    {
+      "id": "7",
+      "name": "Tênis Runner Pro",
+      "category": "Tênis",
+      "price": 429.9,
+      "image": "/images/product-7.png",
+      "description": "Alta performance e excelente amortecimento."
+    },
+    {
+      "id": "8",
+      "name": "Calça Cargo",
+      "category": "Roupas",
+      "price": 169.9,
+      "image": "/images/product-8.png",
+      "description": "Prática e estilosa para o dia a dia."
+    },
+    {
+      "id": "9",
+      "name": "Relógio Urban",
+      "category": "Acessórios",
+      "price": 399.9,
+      "image": "/images/product-9.png",
+      "description": "Visual elegante com pegada moderna."
+    }
+  ]
+}
