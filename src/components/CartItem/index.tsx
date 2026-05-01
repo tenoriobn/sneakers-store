@@ -1,8 +1,9 @@
 import useCart from 'src/hooks/useCart';
 import type { CartItemProps } from './cartItem.type';
+import QuantityControl from '../QuantityControl';
 
 function CartItem({ item }: CartItemProps) {
-  const { incrementQuantity, decrementQuantity, removeFromCart } = useCart();
+  const { removeFromCart } = useCart();
 
   return (
     <article className="flex flex-col gap-5 rounded-3xl border border-zinc-200 bg-white p-5 sm:flex-row">
@@ -25,27 +26,7 @@ function CartItem({ item }: CartItemProps) {
         </strong>
 
         <div className="mt-5 flex flex-wrap items-center gap-4">
-          <div className="flex items-center rounded-xl border border-zinc-300">
-            <button
-              type="button"
-              onClick={() => decrementQuantity(item.id)}
-              className="h-11 w-11 text-xl font-bold text-orange-400"
-              aria-label="Diminuir quantidade"
-            >
-              -
-            </button>
-
-            <span className="min-w-12 text-center font-semibold">{item.quantity}</span>
-
-            <button
-              type="button"
-              onClick={() => incrementQuantity(item.id)}
-              className="h-11 w-11 text-xl font-bold text-orange-400"
-              aria-label="Aumentar quantidade"
-            >
-              +
-            </button>
-          </div>
+          <QuantityControl product={item} />
 
           <button
             type="button"

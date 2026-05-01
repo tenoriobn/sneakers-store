@@ -1,4 +1,4 @@
-import type { Product } from "src/types/product.type";
+import type { Product } from 'src/types/product.type';
 
 export type CartItem = Product & {
   quantity: number;
@@ -14,6 +14,7 @@ export type CartContextValue = {
   incrementQuantity: (productId: string) => void;
   decrementQuantity: (productId: string) => void;
   removeFromCart: (productId: string) => void;
+  getProductQuantity: (productId: string) => number;
   clearCart: () => void;
   finishOrder: () => void;
 };

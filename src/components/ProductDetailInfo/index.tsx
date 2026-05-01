@@ -1,12 +1,9 @@
-import useCart from 'src/hooks/useCart';
 import type { ProductDetailInfoProps } from './productDetailInfo.type';
+import QuantityControl from '../QuantityControl';
+import useBuyNow from 'src/hooks/useBuyNow';
 
 function ProductDetailInfo({ product }: ProductDetailInfoProps) {
-  const { addToCart } = useCart();
-
-  function handleAddToCart() {
-    addToCart(product);
-  }
+  const { buyNow } = useBuyNow();
 
   return (
     <section className="grid gap-10 lg:grid-cols-2">
@@ -34,13 +31,16 @@ function ProductDetailInfo({ product }: ProductDetailInfoProps) {
 
         <p className="mt-6 text-lg leading-8 text-zinc-500">{product.description}</p>
 
+        <div className="mt-10">
+          <QuantityControl product={product} />
+        </div>
+
         <button
           type="button"
-          onClick={handleAddToCart}
-          className="transition-default mt-10 h-14 cursor-pointer rounded-2xl bg-orange-400 px-8 font-semibold text-white transition hover:bg-orange-400/75 active:scale-95 active:bg-orange-400/85"
-          aria-label={`Adicionar ${product.name} ao carrinho`}
+          onClick={() => buyNow(product)}
+          className="transition-default mt-10 h-14 cursor-pointer rounded-2xl bg-orange-400 px-8 font-semibold text-white hover:bg-orange-400/75 active:scale-95 active:bg-orange-400/85"
         >
-          Adicionar ao carrinho
+          Comprar
         </button>
       </div>
     </section>

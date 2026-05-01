@@ -1,16 +1,13 @@
 import { Link } from 'react-router-dom';
-import useCart from 'src/hooks/useCart';
 import type { ProductCardProps } from './productCard.type';
+import QuantityControl from '../QuantityControl';
+import useBuyNow from 'src/hooks/useBuyNow';
 
 function ProductCard({ product }: ProductCardProps) {
-  const { addToCart } = useCart();
-
-  function handleAddToCart() {
-    addToCart(product);
-  }
+  const { buyNow } = useBuyNow();
 
   return (
-    <article className="transition-default row-span-6 grid grid-rows-subgrid gap-0 overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm hover:-translate-y-1 hover:shadow-md">
+    <article className="transition-default row-span-7 grid grid-rows-subgrid gap-0 overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm hover:-translate-y-1 hover:shadow-md">
       <div className="aspect-square overflow-hidden bg-zinc-100">
         <img
           src={product.image}
@@ -34,6 +31,10 @@ function ProductCard({ product }: ProductCardProps) {
         })}
       </strong>
 
+      <div className="mx-5 mt-5">
+        <QuantityControl product={product} fullWidth />
+      </div>
+
       <div className="m-5 flex flex-wrap gap-3">
         <Link
           to={`/produto/${product.id}`}
@@ -43,7 +44,8 @@ function ProductCard({ product }: ProductCardProps) {
         </Link>
 
         <button
-          onClick={handleAddToCart}
+          type="button"
+          onClick={() => buyNow(product)}
           className="transition-default min-w-35 flex-1 rounded-xl bg-orange-400 px-4 py-3 font-medium whitespace-nowrap text-white hover:bg-orange-400/75 active:scale-95 active:bg-orange-400/85"
         >
           Comprar

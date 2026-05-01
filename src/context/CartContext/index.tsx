@@ -1,15 +1,9 @@
-import {
-  createContext,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
+import { createContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 
-import { getStoredCart, persistCart } from "src/services/cartService";
+import { getStoredCart, persistCart } from 'src/services/cartService';
 
-import type { CartContextValue, CartItem } from "src/types/cart.type";
-import type { Product } from "src/types/product.type";
+import type { CartContextValue, CartItem } from 'src/types/cart.type';
+import type { Product } from 'src/types/product.type';
 
 type CartProviderProps = {
   children: ReactNode;
@@ -41,7 +35,7 @@ function CartProvider({ children }: CartProviderProps) {
                 ...item,
                 quantity: item.quantity + 1,
               }
-            : item,
+            : item
         );
       }
 
@@ -55,6 +49,12 @@ function CartProvider({ children }: CartProviderProps) {
     });
   }
 
+  function getProductQuantity(productId: string) {
+    const item = items.find((cartItem) => cartItem.id === productId);
+
+    return item?.quantity ?? 0;
+  }
+
   function incrementQuantity(productId: string) {
     setItems((currentItems) =>
       currentItems.map((item) =>
@@ -63,9 +63,13 @@ function CartProvider({ children }: CartProviderProps) {
               ...item,
               quantity: item.quantity + 1,
             }
-          : item,
-      ),
+          : item
+      )
     );
+  }
+
+  function removeFromCart(productId: string) {
+    setItems((currentItems) => currentItems.filter((item) => item.id !== productId));
   }
 
   function decrementQuantity(productId: string) {
@@ -77,15 +81,9 @@ function CartProvider({ children }: CartProviderProps) {
                 ...item,
                 quantity: item.quantity - 1,
               }
-            : item,
+            : item
         )
-        .filter((item) => item.quantity > 0),
-    );
-  }
-
-  function removeFromCart(productId: string) {
-    setItems((currentItems) =>
-      currentItems.filter((item) => item.id !== productId),
+        .filter((item) => item.quantity > 0)
     );
   }
 
@@ -99,12 +97,12 @@ function CartProvider({ children }: CartProviderProps) {
 
   const totalItems = useMemo(
     () => items.reduce((total, item) => total + item.quantity, 0),
-    [items],
+    [items]
   );
 
   const subtotal = useMemo(
     () => items.reduce((total, item) => total + item.price * item.quantity, 0),
-    [items],
+    [items]
   );
 
   const shipping = items.length > 0 ? SHIPPING_PRICE : 0;
@@ -122,10 +120,11 @@ function CartProvider({ children }: CartProviderProps) {
       incrementQuantity,
       decrementQuantity,
       removeFromCart,
+      getProductQuantity,
       clearCart,
       finishOrder,
     }),
-    [items, totalItems, subtotal, shipping, total],
+    [items, totalItems, subtotal, shipping, total]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
