@@ -1,6 +1,6 @@
-import Search from 'public/icons/search.svg?react';
-import Filter from 'public/icons/filter.svg?react';
-import ChevronUpDown from 'public/icons/chevron-up-down.svg?react';
+import Search from 'src/assets/icons/search.svg?react';
+import Filter from 'src/assets/icons/filter.svg?react';
+import ChevronUpDown from 'src/assets/icons/chevron-up-down.svg?react';
 import type { ProductFiltersProps } from './productFilters.type';
 import Dropdown from '../Dropdown';
 import type { ProductOrder } from 'src/types/product.type';

@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import useCart from 'src/hooks/useCart';
-import Logo from 'public/icons/logo.svg?react';
+import Logo from 'src/assets/icons/logo.svg?react';
 
 export default function Header() {
   const { totalItems } = useCart();

@@ -1,6 +1,10 @@
 import type { Product, ProductFilters, ProductsResponse } from 'src/types/product.type';
 
-const API_URL = 'http://localhost:3001/products';
+const API_URL = '/data/db.json';
+
+type DatabaseResponse = {
+  products: Product[];
+};
 
 function normalizeText(value: string) {
   return value.trim().toLowerCase();
@@ -10,11 +14,11 @@ function sortProducts(products: Product[], order: ProductFilters['order']) {
   const sortedProducts = [...products];
 
   if (order === 'price-asc') {
-    sortedProducts.sort((firstProduct, secondProduct) => firstProduct.price - secondProduct.price);
+    sortedProducts.sort((a, b) => a.price - b.price);
   }
 
   if (order === 'price-desc') {
-    sortedProducts.sort((firstProduct, secondProduct) => secondProduct.price - firstProduct.price);
+    sortedProducts.sort((a, b) => b.price - a.price);
   }
 
   if (order === 'name-asc') {
@@ -29,10 +33,10 @@ function sortProducts(products: Product[], order: ProductFilters['order']) {
 }
 
 function paginateProducts(products: Product[], page: number, limit: number) {
-  const startIndex = (page - 1) * limit;
-  const endIndex = startIndex + limit;
+  const start = (page - 1) * limit;
+  const end = start + limit;
 
-  return products.slice(startIndex, endIndex);
+  return products.slice(start, end);
 }
 
 function createResponse(products: Product[], page: number, limit: number): ProductsResponse {
@@ -50,83 +54,58 @@ function createResponse(products: Product[], page: number, limit: number): Produ
   };
 }
 
-export async function getProducts(filters: ProductFilters): Promise<ProductsResponse> {
-  const hasFilters = Boolean(filters.search) || Boolean(filters.category) || filters.order !== '';
-
-  if (!hasFilters) {
-    const params = new URLSearchParams({
-      _page: String(filters.page),
-      _per_page: String(filters.limit),
-    });
-
-    const response = await fetch(`${API_URL}?${params.toString()}`);
-
-    if (!response.ok) {
-      throw new Error('Erro ao buscar produtos');
-    }
-
-    return response.json();
-  }
-
-  const response = await fetch(`${API_URL}?_page=1&_per_page=9999`);
+async function getDatabase() {
+  const response = await fetch(API_URL);
 
   if (!response.ok) {
     throw new Error('Erro ao buscar produtos');
   }
 
-  const payload = (await response.json()) as ProductsResponse;
+  return (await response.json()) as DatabaseResponse;
+}
 
-  let filteredProducts = payload.data;
+export async function getProducts(filters: ProductFilters): Promise<ProductsResponse> {
+  const database = await getDatabase();
+
+  let products = database.products;
 
   if (filters.search) {
-    const normalizedSearch = normalizeText(filters.search);
+    const search = normalizeText(filters.search);
 
-    filteredProducts = filteredProducts.filter((product) =>
-      normalizeText(product.name).includes(normalizedSearch)
-    );
+    products = products.filter((product) => normalizeText(product.name).includes(search));
   }
 
   if (filters.category) {
-    filteredProducts = filteredProducts.filter((product) => product.category === filters.category);
+    products = products.filter((product) => product.category === filters.category);
   }
 
-  filteredProducts = sortProducts(filteredProducts, filters.order);
+  products = sortProducts(products, filters.order);
 
-  return createResponse(filteredProducts, filters.page, filters.limit);
+  return createResponse(products, filters.page, filters.limit);
 }
 
 export async function getCategories() {
-  const response = await fetch(`${API_URL}?_page=1&_per_page=9999`);
+  const database = await getDatabase();
 
-  if (!response.ok) {
-    throw new Error('Erro ao buscar categorias');
-  }
-
-  const payload = (await response.json()) as ProductsResponse;
-
-  return [...new Set(payload.data.map((product) => product.category))];
+  return [...new Set(database.products.map((product) => product.category))];
 }
 
 export async function getProductById(productId: string) {
-  const response = await fetch(`${API_URL}/${productId}`);
+  const database = await getDatabase();
 
-  if (!response.ok) {
+  const product = database.products.find((item) => item.id === productId);
+
+  if (!product) {
     throw new Error('Produto não encontrado');
   }
 
-  return (await response.json()) as Product;
+  return product;
 }
 
 export async function getRelatedProducts(category: string, currentProductId: string) {
-  const response = await fetch(`${API_URL}?_page=1&_per_page=9999`);
+  const database = await getDatabase();
 
-  if (!response.ok) {
-    throw new Error('Erro ao buscar produtos relacionados');
-  }
-
-  const payload = (await response.json()) as ProductsResponse;
-
-  return payload.data
+  return database.products
     .filter((product) => product.category === category && product.id !== currentProductId)
     .slice(0, 4);
 }

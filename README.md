@@ -1,73 +1,186 @@
-# React + TypeScript + Vite
+# 🛍️ Sneakers Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma aplicação de e-commerce desenvolvida com **React + TypeScript + Vite**, focada em **componentização**, **boa experiência do usuário**, **código limpo** e **arquitetura escalável**.
 
-Currently, two official plugins are available:
+O projeto simula uma loja virtual moderna, permitindo navegar por produtos, visualizar detalhes, controlar quantidades e gerenciar um carrinho persistido no navegador.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Preview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🌐 **Produção (Vercel):**  
+  https://sneakers-store-app.vercel.app
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🧰 Tecnologias
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- React
+- TypeScript
+- Vite
+- React Router
+- Tailwind CSS
+- Context API
+- Local Storage
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## ✨ Funcionalidades
+
+### 🛒 Catálogo de produtos
+
+- Listagem de produtos
+- Busca por nome
+- Filtro por categoria
+- Ordenação:
+  - Nome (A-Z / Z-A)
+  - Menor preço
+  - Maior preço
+- Paginação
+
+### 📦 Detalhes do produto
+
+- Página individual
+- Produtos relacionados
+- Controle de quantidade
+- Compra rápida
+
+### 🧺 Carrinho
+
+- Adicionar produto
+- Atualizar quantidade
+- Remover produto
+- Total automático
+- Persistência com Local Storage
+
+### 💡 Experiência do usuário (UX)
+
+- Layout responsivo
+- Loading state
+- Empty state
+- Error state
+- Navegação SPA sem recarregamento
+
+---
+
+## 🏗️ Arquitetura
+
+```txt
+src/
+ ├─ components/
+ ├─ context/
+ ├─ hooks/
+ ├─ layouts/
+ ├─ pages/
+ ├─ routes/
+ ├─ services/
+ ├─ types/
+ └─ utils/
+
+public/
+ ├─ data/
+ │   └─ products.json
+ └─ images/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+````
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 📐 Padrões adotados
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Componentes desacoplados
+- Hooks customizados
+- Princípio da responsabilidade única
+- Tipagem forte com TypeScript
+- Reutilização de componentes
+- Código previsível e legível
+
+---
+
+## ⚙️ Como rodar localmente
+
+### 1. Clonar o projeto
+
+```bash
+git clone <url-do-repositorio>
 ```
+
+### 2. Acessar a pasta
+
+```bash
+cd react-store
+```
+
+### 3. Instalar dependências
+
+```bash
+npm install
+```
+
+### 4. Rodar o projeto
+
+```bash
+npm run dev
+```
+
+A aplicação estará disponível em:
+
+```
+http://localhost:5173
+```
+
+---
+
+## 🗄️ Fonte de dados
+
+O projeto utiliza dados mockados estáticos:
+
+```txt
+public/data/products.json
+```
+
+### Motivos da escolha:
+
+- Simplicidade
+- Zero dependência de backend
+- Deploy facilitado
+- Comportamento previsível
+- Ideal para demonstração técnica front-end
+
+---
+
+## 🚀 Deploy
+
+Aplicação publicada na **Vercel**, com:
+
+- Build automático
+- SPA routing configurado
+- Suporte a refresh (F5)
+- Assets estáticos otimizados
+
+---
+
+## 🔮 Melhorias futuras
+
+- Wishlist
+- Checkout
+- Feedback com toast
+- Skeleton loading
+- Testes unitários
+- Testes E2E
+- Integração com API real
+
+---
+
+## 🎯 Objetivo do projeto
+
+Demonstrar habilidades em:
+
+- Arquitetura front-end
+- Componentização
+- Gerenciamento de estado
+- Persistência de dados
+- Roteamento
+- Responsividade
+- Experiência do usuário
+- Boas práticas de código
+````
