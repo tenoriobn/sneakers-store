@@ -1,9 +1,8 @@
-import { createContext, useEffect, useMemo, useState, type ReactNode } from 'react';
-
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { getStoredCart, persistCart } from 'src/services/cartService';
-
-import type { CartContextValue, CartItem } from 'src/types/cart.type';
+import type { CartItem } from 'src/types/cart.type';
 import type { Product } from 'src/types/product.type';
+import { CartContext } from './CartContext';
 
 type CartProviderProps = {
   children: ReactNode;
@@ -11,14 +10,8 @@ type CartProviderProps = {
 
 const SHIPPING_PRICE = 29.9;
 
-export const CartContext = createContext<CartContextValue | null>(null);
-
 function CartProvider({ children }: CartProviderProps) {
-  const [items, setItems] = useState<CartItem[]>([]);
-
-  useEffect(() => {
-    setItems(getStoredCart());
-  }, []);
+  const [items, setItems] = useState<CartItem[]>(() => getStoredCart());
 
   useEffect(() => {
     persistCart(items);
@@ -49,11 +42,10 @@ function CartProvider({ children }: CartProviderProps) {
     });
   }
 
-  function getProductQuantity(productId: string) {
-    const item = items.find((cartItem) => cartItem.id === productId);
-
-    return item?.quantity ?? 0;
-  }
+  const getProductQuantity = useCallback(
+    (productId: string) => items.find((item) => item.id === productId)?.quantity ?? 0,
+    [items]
+  );
 
   function incrementQuantity(productId: string) {
     setItems((currentItems) =>
@@ -124,9 +116,8 @@ function CartProvider({ children }: CartProviderProps) {
       clearCart,
       finishOrder,
     }),
-    [items, totalItems, subtotal, shipping, total]
+    [items, totalItems, subtotal, shipping, total, getProductQuantity]
   );
-
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 

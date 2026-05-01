@@ -1,5 +1,4 @@
 import useCart from 'src/hooks/useCart';
-
 import type { CartSummaryProps } from './cartSummary.type';
 
 function formatPrice(value: number) {
@@ -13,7 +12,7 @@ function CartSummary({ subtotal, shipping, total }: CartSummaryProps) {
   const { clearCart, finishOrder } = useCart();
 
   return (
-    <aside className="sticky top-6 rounded-3xl border border-zinc-200 bg-white p-6">
+    <aside className="sticky top-6 h-max rounded-3xl border border-zinc-200 bg-white p-6">
       <h2 className="text-2xl font-bold">Resumo</h2>
 
       <div className="mt-6 space-y-4">
