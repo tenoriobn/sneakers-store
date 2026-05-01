@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { CartContext } from 'src/context/CartContext';
 
-function useCart() {
+export default function useCart() {
   const context = useContext(CartContext);
 
   if (!context) {
@@ -10,5 +10,3 @@ function useCart() {
 
   return context;
 }
-
-export default useCart;

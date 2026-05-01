@@ -2,7 +2,7 @@ import useCart from 'src/hooks/useCart';
 import type { CartItemProps } from './cartItem.type';
 import QuantityControl from '../QuantityControl';
 
-function CartItem({ item }: CartItemProps) {
+export default function CartItem({ item }: CartItemProps) {
   const { removeFromCart } = useCart();
 
   return (
@@ -40,5 +40,3 @@ function CartItem({ item }: CartItemProps) {
     </article>
   );
 }
-
-export default CartItem;

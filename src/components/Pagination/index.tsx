@@ -1,6 +1,6 @@
 import type { PaginationProps } from './pagination.type';
 
-function Pagination({ currentPage, totalPages, onChange }: PaginationProps) {
+export default function Pagination({ currentPage, totalPages, onChange }: PaginationProps) {
   if (totalPages <= 1) {
     return null;
   }
@@ -32,5 +32,3 @@ function Pagination({ currentPage, totalPages, onChange }: PaginationProps) {
     </nav>
   );
 }
-
-export default Pagination;

@@ -1,7 +1,5 @@
-import RoutesProvider from "src/routes";
+import RoutesProvider from 'src/routes';
 
-function App() {
+export default function App() {
   return <RoutesProvider />;
 }
-
-export default App;
