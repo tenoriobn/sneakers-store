@@ -17,10 +17,12 @@ function sortProducts(products: Product[], order: ProductFilters['order']) {
     sortedProducts.sort((firstProduct, secondProduct) => secondProduct.price - firstProduct.price);
   }
 
-  if (order === 'name') {
-    sortedProducts.sort((firstProduct, secondProduct) =>
-      firstProduct.name.localeCompare(secondProduct.name)
-    );
+  if (order === 'name-asc') {
+    sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  if (order === 'name-desc') {
+    sortedProducts.sort((a, b) => b.name.localeCompare(a.name));
   }
 
   return sortedProducts;
@@ -49,8 +51,7 @@ function createResponse(products: Product[], page: number, limit: number): Produ
 }
 
 export async function getProducts(filters: ProductFilters): Promise<ProductsResponse> {
-  const hasFilters =
-    Boolean(filters.search) || Boolean(filters.category) || filters.order !== 'name';
+  const hasFilters = Boolean(filters.search) || Boolean(filters.category) || filters.order !== '';
 
   if (!hasFilters) {
     const params = new URLSearchParams({

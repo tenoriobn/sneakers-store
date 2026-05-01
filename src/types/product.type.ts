@@ -7,7 +7,7 @@ export type Product = {
   description: string;
 };
 
-export type ProductOrder = "name" | "price-asc" | "price-desc";
+export type ProductOrder = '' | 'name-asc' | 'name-desc' | 'price-asc' | 'price-desc';
 
 export type ProductFilters = {
   search: string;

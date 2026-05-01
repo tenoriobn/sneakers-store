@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-
 import { getCategories, getProducts } from 'src/services/productService';
 import type { Product, ProductFilters } from 'src/types/product.type';
 
 const INITIAL_FILTERS: ProductFilters = {
   search: '',
   category: '',
-  order: 'name',
+  order: 'name-asc',
   page: 1,
   limit: 12,
 };
