@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import useCart from 'src/hooks/useCart';
+import Logo from 'public/icons/logo.svg?react';
 
 export default function Header() {
   const { totalItems } = useCart();
@@ -13,7 +14,7 @@ export default function Header() {
     <header className="border-b border-zinc-200 bg-white">
       <div className="mx-auto flex w-full max-w-480 items-center justify-between px-4 py-6 md:px-8 md:py-8 xl:px-21">
         <NavLink to="/" className="text-xl font-bold">
-          Store
+          <Logo className="text-zinc-900" />
         </NavLink>
 
         <nav className="flex items-center gap-6">

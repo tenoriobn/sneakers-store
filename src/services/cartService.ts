@@ -1,6 +1,6 @@
-import type { CartItem } from "src/types/cart.type";
+import type { CartItem } from 'src/types/cart.type';
 
-const CART_STORAGE_KEY = "react-store:cart";
+const CART_STORAGE_KEY = 'sneakers-store:cart';
 
 export function getStoredCart() {
   const storedCart = localStorage.getItem(CART_STORAGE_KEY);
