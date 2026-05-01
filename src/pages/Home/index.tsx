@@ -8,13 +8,15 @@ export default function Home() {
     useProducts();
 
   return (
-    <section>
+    <section aria-labelledby="products-heading">
       <header className="mb-10">
-        <span className="text-sm font-medium tracking-[0.2em] text-orange-400 uppercase">
+        <p className="text-sm font-medium tracking-[0.2em] text-orange-400 uppercase">
           Loja virtual
-        </span>
+        </p>
 
-        <h1 className="mt-3 text-4xl font-bold text-zinc-900">Produtos em destaque</h1>
+        <h1 id="products-heading" className="mt-3 text-4xl font-bold text-zinc-900">
+          Produtos em destaque
+        </h1>
 
         <p className="mt-3 text-zinc-500">
           Explore nossa coleção com produtos modernos, funcionais e selecionados para o dia a dia.
@@ -24,17 +26,26 @@ export default function Home() {
       <ProductFilters categories={categories} filters={filters} onChange={updateFilters} />
 
       {isLoading && (
-        <div className="py-20 text-center text-lg text-zinc-500">Carregando produtos...</div>
+        <div role="status" aria-live="polite" className="py-20 text-center text-lg text-zinc-500">
+          Carregando produtos...
+        </div>
       )}
 
       {!isLoading && error && (
-        <div className="rounded-2xl border border-red-200 bg-red-50 px-6 py-5 text-red-700">
+        <div
+          role="alert"
+          className="rounded-2xl border border-red-200 bg-red-50 px-6 py-5 text-red-700"
+        >
           {error}
         </div>
       )}
 
       {!isLoading && !error && products.length === 0 && (
-        <div className="rounded-2xl border border-zinc-200 bg-white px-6 py-12 text-center text-zinc-500">
+        <div
+          role="status"
+          aria-live="polite"
+          className="rounded-2xl border border-zinc-200 bg-white px-6 py-12 text-center text-zinc-500"
+        >
           Nenhum produto encontrado.
         </div>
       )}
