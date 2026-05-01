@@ -1,0 +1,25 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Tênis Urban Runner",
+      "price": 299.9,
+      "image": "/images/product-1.png",
+      "description": "Tênis leve e confortável."
+    },
+    {
+      "id": 2,
+      "name": "Camiseta Essential",
+      "price": 89.9,
+      "image": "/images/product-2.png",
+      "description": "Camiseta premium algodão."
+    },
+    {
+      "id": 3,
+      "name": "Mochila Tech",
+      "price": 199.9,
+      "image": "/images/product-3.png",
+      "description": "Mochila moderna resistente."
+    }
+  ]
+}
