@@ -1,11 +1,11 @@
-import useCart from "src/hooks/useCart";
+import useCart from 'src/hooks/useCart';
 
-import type { CartSummaryProps } from "./cartSummary.type";
+import type { CartSummaryProps } from './cartSummary.type';
 
 function formatPrice(value: number) {
-  return value.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
+  return value.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
   });
 }
 
@@ -38,7 +38,7 @@ function CartSummary({ subtotal, shipping, total }: CartSummaryProps) {
       <button
         type="button"
         onClick={finishOrder}
-        className="mt-8 h-14 w-full rounded-2xl bg-zinc-900 font-semibold text-white transition hover:bg-zinc-700"
+        className="transition-default mt-8 h-14 w-full rounded-2xl bg-orange-400 font-semibold text-white hover:bg-orange-400/75 active:scale-95 active:bg-orange-400/85"
       >
         Finalizar compra
       </button>
@@ -46,7 +46,7 @@ function CartSummary({ subtotal, shipping, total }: CartSummaryProps) {
       <button
         type="button"
         onClick={clearCart}
-        className="mt-3 h-14 w-full rounded-2xl border border-zinc-300 font-semibold transition hover:bg-zinc-100"
+        className="transition-default mt-3 h-14 w-full rounded-2xl border border-orange-400 font-semibold text-orange-400 hover:border-orange-400/75 active:scale-95 active:border-orange-400/85"
       >
         Limpar carrinho
       </button>

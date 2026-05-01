@@ -1,4 +1,4 @@
-import type { PaginationProps } from "./pagination.type";
+import type { PaginationProps } from './pagination.type';
 
 function Pagination({ currentPage, totalPages, onChange }: PaginationProps) {
   if (totalPages <= 1) {
@@ -18,11 +18,11 @@ function Pagination({ currentPage, totalPages, onChange }: PaginationProps) {
             type="button"
             onClick={() => onChange(page)}
             aria-label={`Página ${page}`}
-            aria-current={isActive ? "page" : undefined}
-            className={`flex h-11 w-11 items-center justify-center rounded-xl border font-medium transition ${
+            aria-current={isActive ? 'page' : undefined}
+            className={`transition-default flex h-11 w-11 items-center justify-center rounded-xl border font-medium ${
               isActive
-                ? "border-zinc-900 bg-zinc-900 text-white"
-                : "border-zinc-300 bg-white hover:bg-zinc-100"
+                ? 'border-orange-400 bg-orange-400 text-white'
+                : 'border-zinc-300 bg-white hover:border-orange-400/75 hover:bg-orange-400/75 hover:text-white active:scale-95 active:border-orange-400/85 active:bg-orange-400/85 active:text-white'
             }`}
           >
             {page}

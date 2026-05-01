@@ -1,47 +1,30 @@
-import ProductCard from "src/components/ProductCard";
-import ProductFilters from "src/components/ProductFilters";
-import Pagination from "src/components/Pagination";
-import useProducts from "src/hooks/useProducts";
+import ProductCard from 'src/components/ProductCard';
+import ProductFilters from 'src/components/ProductFilters';
+import Pagination from 'src/components/Pagination';
+import useProducts from 'src/hooks/useProducts';
 
-function Home() {
-  const {
-    products,
-    categories,
-    pages,
-    filters,
-    isLoading,
-    error,
-    updateFilters,
-    changePage,
-  } = useProducts();
+export default function Home() {
+  const { products, categories, pages, filters, isLoading, error, updateFilters, changePage } =
+    useProducts();
 
   return (
     <section>
       <header className="mb-10">
-        <span className="text-sm font-medium uppercase tracking-[0.2em] text-zinc-500">
+        <span className="text-sm font-medium tracking-[0.2em] text-orange-400 uppercase">
           Loja virtual
         </span>
 
-        <h1 className="mt-3 text-4xl font-bold text-zinc-900">
-          Produtos em destaque
-        </h1>
+        <h1 className="mt-3 text-4xl font-bold text-zinc-900">Produtos em destaque</h1>
 
-        <p className="mt-3 max-w-2xl text-zinc-500">
-          Explore nossa coleção com produtos modernos, funcionais e selecionados
-          para o dia a dia.
+        <p className="mt-3 text-zinc-500">
+          Explore nossa coleção com produtos modernos, funcionais e selecionados para o dia a dia.
         </p>
       </header>
 
-      <ProductFilters
-        categories={categories}
-        filters={filters}
-        onChange={updateFilters}
-      />
+      <ProductFilters categories={categories} filters={filters} onChange={updateFilters} />
 
       {isLoading && (
-        <div className="py-20 text-center text-lg text-zinc-500">
-          Carregando produtos...
-        </div>
+        <div className="py-20 text-center text-lg text-zinc-500">Carregando produtos...</div>
       )}
 
       {!isLoading && error && (
@@ -64,15 +47,9 @@ function Home() {
             ))}
           </div>
 
-          <Pagination
-            currentPage={filters.page}
-            totalPages={pages}
-            onChange={changePage}
-          />
+          <Pagination currentPage={filters.page} totalPages={pages} onChange={changePage} />
         </>
       )}
     </section>
   );
 }
-
-export default Home;

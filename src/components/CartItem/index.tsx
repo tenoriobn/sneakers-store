@@ -1,6 +1,5 @@
-import useCart from "src/hooks/useCart";
-
-import type { CartItemProps } from "./cartItem.type";
+import useCart from 'src/hooks/useCart';
+import type { CartItemProps } from './cartItem.type';
 
 function CartItem({ item }: CartItemProps) {
   const { incrementQuantity, decrementQuantity, removeFromCart } = useCart();
@@ -10,7 +9,7 @@ function CartItem({ item }: CartItemProps) {
       <img
         src={item.image}
         alt={item.name}
-        className="h-36 w-full rounded-2xl object-cover sm:w-36"
+        className="h-40.5 w-full rounded-2xl object-cover sm:w-36"
       />
 
       <div className="flex flex-1 flex-col">
@@ -19,9 +18,9 @@ function CartItem({ item }: CartItemProps) {
         <h2 className="mt-1 text-xl font-semibold">{item.name}</h2>
 
         <strong className="mt-3 text-2xl font-bold">
-          {item.price.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL",
+          {item.price.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
           })}
         </strong>
 
@@ -30,20 +29,18 @@ function CartItem({ item }: CartItemProps) {
             <button
               type="button"
               onClick={() => decrementQuantity(item.id)}
-              className="h-11 w-11 text-xl"
+              className="h-11 w-11 text-xl font-bold text-orange-400"
               aria-label="Diminuir quantidade"
             >
               -
             </button>
 
-            <span className="min-w-12 text-center font-semibold">
-              {item.quantity}
-            </span>
+            <span className="min-w-12 text-center font-semibold">{item.quantity}</span>
 
             <button
               type="button"
               onClick={() => incrementQuantity(item.id)}
-              className="h-11 w-11 text-xl"
+              className="h-11 w-11 text-xl font-bold text-orange-400"
               aria-label="Aumentar quantidade"
             >
               +
