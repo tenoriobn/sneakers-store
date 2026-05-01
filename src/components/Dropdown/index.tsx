@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import Arrow from 'public/icons/arrow.svg?react';
-import Check from 'public/icons/check.svg?react';
+import Arrow from 'src/assets/icons/arrow.svg?react';
+import Check from 'src/assets/icons/check.svg?react';
 import type { DropdownProps } from './dropdown.type';
 
 export default function Dropdown({ icon, value, placeholder, options, onChange }: DropdownProps) {
