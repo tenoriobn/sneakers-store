@@ -85,3 +85,33 @@ export async function getCategories() {
 
   return [...new Set(payload.data.map((product) => product.category))];
 }
+
+export async function getProductById(productId: string) {
+  const response = await fetch(`${API_URL}/${productId}`);
+
+  if (!response.ok) {
+    throw new Error("Produto não encontrado");
+  }
+
+  return (await response.json()) as Product;
+}
+
+export async function getRelatedProducts(
+  category: string,
+  currentProductId: string,
+) {
+  const response = await fetch(`${API_URL}?_page=1&_per_page=1000`);
+
+  if (!response.ok) {
+    throw new Error("Erro ao buscar produtos relacionados");
+  }
+
+  const payload = (await response.json()) as ProductsResponse;
+
+  return payload.data
+    .filter(
+      (product) =>
+        product.category === category && product.id !== currentProductId,
+    )
+    .slice(0, 4);
+}

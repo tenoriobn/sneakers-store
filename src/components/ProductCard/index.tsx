@@ -1,8 +1,16 @@
 import { Link } from "react-router-dom";
 
+import useCart from "src/hooks/useCart";
+
 import type { ProductCardProps } from "./productCard.type";
 
 function ProductCard({ product }: ProductCardProps) {
+  const { addToCart } = useCart();
+
+  function handleAddToCart() {
+    addToCart(product);
+  }
+
   return (
     <article
       className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md"
@@ -46,7 +54,8 @@ function ProductCard({ product }: ProductCardProps) {
 
           <button
             type="button"
-            className="flex-1 rounded-xl bg-zinc-900 px-4 py-3 font-medium text-white transition hover:bg-zinc-700"
+            onClick={handleAddToCart}
+            className="flex-1 cursor-pointer rounded-xl bg-zinc-900 px-4 py-3 font-medium text-white transition hover:bg-zinc-700"
             aria-label={`Adicionar ${product.name} ao carrinho`}
           >
             Comprar
