@@ -1,0 +1,196 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Tênis Urban Runner",
+      "category": "Tênis",
+      "price": 299.9,
+      "image": "/images/product-1.avif",
+      "description": "Tênis leve e confortável para uso diário."
+    },
+    {
+      "id": "2",
+      "name": "Camiseta Essential",
+      "category": "Roupas",
+      "price": 89.9,
+      "image": "/images/product-2.avif",
+      "description": "Camiseta premium em algodão macio."
+    },
+    {
+      "id": "3",
+      "name": "Mochila Tech",
+      "category": "Acessórios",
+      "price": 199.9,
+      "image": "/images/product-3.avif",
+      "description": "Mochila moderna com compartimento notebook."
+    },
+    {
+      "id": "4",
+      "name": "Tênis Street Max",
+      "category": "Tênis",
+      "price": 349.9,
+      "image": "/images/product-4.avif",
+      "description": "Visual urbano com alta durabilidade."
+    },
+    {
+      "id": "5",
+      "name": "Jaqueta Wind",
+      "category": "Roupas",
+      "price": 249.9,
+      "image": "/images/product-5.avif",
+      "description": "Leve, resistente e confortável."
+    },
+    {
+      "id": "6",
+      "name": "Boné Classic",
+      "category": "Acessórios",
+      "price": 59.9,
+      "image": "/images/product-6.avif",
+      "description": "Design minimalista e ajuste confortável."
+    },
+    {
+      "id": "7",
+      "name": "Tênis Runner Pro",
+      "category": "Tênis",
+      "price": 429.9,
+      "image": "/images/product-7.avif",
+      "description": "Alta performance e excelente amortecimento."
+    },
+    {
+      "id": "8",
+      "name": "Calça Cargo",
+      "category": "Roupas",
+      "price": 169.9,
+      "image": "/images/product-8.avif",
+      "description": "Prática e estilosa para o dia a dia."
+    },
+    {
+      "id": "9",
+      "name": "Relógio Urban",
+      "category": "Acessórios",
+      "price": 399.9,
+      "image": "/images/product-9.avif",
+      "description": "Visual elegante com pegada moderna."
+    },
+    {
+      "id": "10",
+      "name": "Tênis Flex Street",
+      "category": "Tênis",
+      "price": 319.9,
+      "image": "/images/product-10.avif",
+      "description": "Flexível e ideal para rotina urbana."
+    },
+    {
+      "id": "11",
+      "name": "Tênis Air Flow",
+      "category": "Tênis",
+      "price": 379.9,
+      "image": "/images/product-11.avif",
+      "description": "Respirável com design esportivo."
+    },
+    {
+      "id": "12",
+      "name": "Tênis Daily Comfort",
+      "category": "Tênis",
+      "price": 259.9,
+      "image": "/images/product-12.avif",
+      "description": "Conforto prolongado para uso diário."
+    },
+    {
+      "id": "13",
+      "name": "Camiseta Urban Fit",
+      "category": "Roupas",
+      "price": 99.9,
+      "image": "/images/product-13.avif",
+      "description": "Modelagem moderna e confortável."
+    },
+    {
+      "id": "14",
+      "name": "Camiseta Tech Dry",
+      "category": "Roupas",
+      "price": 119.9,
+      "image": "/images/product-14.avif",
+      "description": "Tecido tecnológico de secagem rápida."
+    },
+    {
+      "id": "15",
+      "name": "Moletom Street Wear",
+      "category": "Roupas",
+      "price": 199.9,
+      "image": "/images/product-15.avif",
+      "description": "Estilo urbano com conforto térmico."
+    },
+    {
+      "id": "16",
+      "name": "Jaqueta Urban Pro",
+      "category": "Roupas",
+      "price": 289.9,
+      "image": "/images/product-16.avif",
+      "description": "Resistente ao vento com design moderno."
+    },
+    {
+      "id": "17",
+      "name": "Calça Jogger",
+      "category": "Roupas",
+      "price": 159.9,
+      "image": "/images/product-17.avif",
+      "description": "Ajuste confortável e estilo casual."
+    },
+    {
+      "id": "18",
+      "name": "Mochila Urban Pack",
+      "category": "Acessórios",
+      "price": 219.9,
+      "image": "/images/product-18.avif",
+      "description": "Compacta e funcional para o dia a dia."
+    },
+    {
+      "id": "19",
+      "name": "Óculos Street Vision",
+      "category": "Acessórios",
+      "price": 149.9,
+      "image": "/images/product-19.avif",
+      "description": "Proteção UV com estilo moderno."
+    },
+    {
+      "id": "20",
+      "name": "Relógio Sport Tech",
+      "category": "Acessórios",
+      "price": 449.9,
+      "image": "/images/product-20.avif",
+      "description": "Tecnologia e desempenho no pulso."
+    },
+    {
+      "id": "21",
+      "name": "Boné Snapback Pro",
+      "category": "Acessórios",
+      "price": 79.9,
+      "image": "/images/product-21.avif",
+      "description": "Ajuste perfeito com estilo urbano."
+    },
+    {
+      "id": "22",
+      "name": "Carteira Slim",
+      "category": "Acessórios",
+      "price": 99.9,
+      "image": "/images/product-22.avif",
+      "description": "Compacta e elegante para o dia a dia."
+    },
+    {
+      "id": "23",
+      "name": "Cinto Casual",
+      "category": "Acessórios",
+      "price": 89.9,
+      "image": "/images/product-23.avif",
+      "description": "Versátil e resistente."
+    },
+    {
+      "id": "24",
+      "name": "Meias Comfort Pack",
+      "category": "Acessórios",
+      "price": 49.9,
+      "image": "/images/product-24.avif",
+      "description": "Kit com conforto e durabilidade."
+    }
+  ]
+}

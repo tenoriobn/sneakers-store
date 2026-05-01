@@ -1,11 +1,5 @@
 @import "tailwindcss";
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
   min-width: 320px;
   font-family:
@@ -15,4 +9,16 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
+}
+
+@layer base {
+  button {
+    @apply cursor-pointer;
+  }
+}
+
+@layer utilities {
+  .transition-default {
+    @apply transition duration-300 ease-in-out;
+  }
 }
