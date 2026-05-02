@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 import CartItem from 'src/components/CartItem';
 import CartSummary from 'src/components/CartSummary';
+import SEO from 'src/components/SEO';
 import useCart from 'src/hooks/useCart';
 
 export default function Cart() {
@@ -26,6 +27,8 @@ export default function Cart() {
 
   return (
     <section>
+      <SEO title="Carrinho" description="Confira seus produtos selecionados." />
+
       <header className="mb-10">
         <h1 className="text-4xl font-bold">Carrinho</h1>
       </header>

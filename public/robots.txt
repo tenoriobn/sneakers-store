@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sneakers-store-app.vercel.app/sitemap.xml

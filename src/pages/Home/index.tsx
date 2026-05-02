@@ -2,6 +2,7 @@ import ProductCard from 'src/components/ProductCard';
 import ProductFilters from 'src/components/ProductFilters';
 import Pagination from 'src/components/Pagination';
 import useProducts from 'src/hooks/useProducts';
+import SEO from 'src/components/SEO';
 
 export default function Home() {
   const { products, categories, pages, filters, isLoading, error, updateFilters, changePage } =
@@ -9,6 +10,8 @@ export default function Home() {
 
   return (
     <section aria-labelledby="products-heading">
+      <SEO />
+
       <header className="mb-10">
         <p className="text-sm font-medium tracking-[0.2em] text-orange-400 uppercase">
           Loja virtual

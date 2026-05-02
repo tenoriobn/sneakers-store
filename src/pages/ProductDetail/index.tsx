@@ -4,6 +4,7 @@ import ProductDetailInfo from 'src/components/ProductDetailInfo';
 import RelatedProducts from 'src/components/RelatedProducts';
 import { getProductById, getRelatedProducts } from 'src/services/productService';
 import type { Product } from 'src/types/product.type';
+import SEO from 'src/components/SEO';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -64,6 +65,13 @@ export default function ProductDetail() {
 
   return (
     <main>
+      <SEO
+        title={product.name}
+        description={product.description}
+        image={product.image}
+        url={`https://sneakers-store-app.vercel.app/produto/${product.id}`}
+      />
+
       <nav className="mb-10 flex items-center gap-2 text-sm text-zinc-500" aria-label="Breadcrumb">
         <ol className="flex items-center gap-2">
           <li>
