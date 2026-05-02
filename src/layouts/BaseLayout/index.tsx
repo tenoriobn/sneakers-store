@@ -7,7 +7,7 @@ export default function BaseLayout() {
     <>
       <Header />
 
-      <main className="mx-auto w-full max-w-480 px-4 py-8 sm:px-6 md:px-8 xl:px-21">
+      <main className="mx-auto w-full max-w-480 flex-1 px-4 pt-26 sm:px-6 md:px-8 md:pt-30 xl:px-21">
         <Outlet />
       </main>
 

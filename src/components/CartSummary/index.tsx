@@ -7,7 +7,7 @@ export default function CartSummary({ subtotal, shipping, total }: CartSummaryPr
 
   return (
     <aside
-      className="sticky top-6 h-max rounded-3xl border border-zinc-200 bg-white p-6"
+      className="sticky top-26 h-max rounded-3xl border border-zinc-200 bg-white p-6 md:top-30"
       aria-labelledby="cart-summary-title"
     >
       <header>

@@ -11,7 +11,7 @@ export default function Header() {
     }`;
 
   return (
-    <header className="border-b border-zinc-200 bg-white">
+    <header className="fixed z-10 w-full border-b border-zinc-200 bg-white">
       <div className="mx-auto flex w-full max-w-480 items-center justify-between px-4 py-6 md:px-8 md:py-8 xl:px-21">
         <NavLink to="/" className="text-xl font-bold text-zinc-900">
           <Logo className="w-25 text-zinc-900 md:h-5 md:w-34.5" />
