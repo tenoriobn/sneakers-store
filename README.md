@@ -1,19 +1,52 @@
-# 🛍️ Sneakers Store
+# 🛍️ React Store
 
-Uma aplicação de e-commerce desenvolvida com **React + TypeScript + Vite**, focada em **componentização**, **boa experiência do usuário**, **código limpo** e **arquitetura escalável**.
+Aplicação de loja virtual desenvolvida como teste técnico para vaga de **Front-end React Developer**, utilizando **React + TypeScript + Vite**.
 
-O projeto simula uma loja virtual moderna, permitindo navegar por produtos, visualizar detalhes, controlar quantidades e gerenciar um carrinho persistido no navegador.
-
----
-
-## 🚀 Preview
-
-- 🌐 **Produção (Vercel):**  
-  https://sneakers-store-app.vercel.app
+O projeto consome dados mockados via arquivo JSON e entrega uma experiência completa de navegação em catálogo, detalhe de produto e carrinho funcional, com foco em **boas práticas**, **componentização**, **UX** e **organização de código**.
 
 ---
 
-## 🧰 Tecnologias
+## Preview
+
+### Produção
+
+https://sneakers-store-app.vercel.app
+
+### Preview Deploy (Pull Request)
+
+Toda Pull Request gera automaticamente um deploy preview via Vercel para validação antes do merge.
+
+---
+
+## Screenshot
+
+<!-- Adicione uma imagem do projeto aqui -->
+
+```md
+![Preview do projeto](./public/images/preview.png)
+```
+
+---
+
+## Funcionalidades
+
+✅ Listagem de produtos  
+✅ Busca por nome  
+✅ Filtro por categoria  
+✅ Ordenação por nome/preço  
+✅ Paginação  
+✅ Página de detalhes do produto  
+✅ Produtos relacionados  
+✅ Carrinho funcional  
+✅ Controle de quantidade  
+✅ Persistência com Local Storage  
+✅ Layout responsivo  
+✅ SEO básico (meta tags / Open Graph / robots / sitemap)  
+✅ Estados de loading / erro / vazio
+
+---
+
+## Stack
 
 - React
 - TypeScript
@@ -25,47 +58,11 @@ O projeto simula uma loja virtual moderna, permitindo navegar por produtos, visu
 
 ---
 
-## ✨ Funcionalidades
+## Arquitetura
 
-### 🛒 Catálogo de produtos
+Estrutura baseada em separação de responsabilidades:
 
-- Listagem de produtos
-- Busca por nome
-- Filtro por categoria
-- Ordenação:
-  - Nome (A-Z / Z-A)
-  - Menor preço
-  - Maior preço
-- Paginação
-
-### 📦 Detalhes do produto
-
-- Página individual
-- Produtos relacionados
-- Controle de quantidade
-- Compra rápida
-
-### 🧺 Carrinho
-
-- Adicionar produto
-- Atualizar quantidade
-- Remover produto
-- Total automático
-- Persistência com Local Storage
-
-### 💡 Experiência do usuário (UX)
-
-- Layout responsivo
-- Loading state
-- Empty state
-- Error state
-- Navegação SPA sem recarregamento
-
----
-
-## 🏗️ Arquitetura
-
-```txt
+```bash
 src/
  ├─ components/
  ├─ context/
@@ -79,108 +76,90 @@ src/
 
 public/
  ├─ data/
- │   └─ products.json
  └─ images/
 ```
 
-````
+Principais decisões:
 
-### 📐 Padrões adotados
-
-- Componentes desacoplados
-- Hooks customizados
-- Princípio da responsabilidade única
-- Tipagem forte com TypeScript
-- Reutilização de componentes
-- Código previsível e legível
+- componentes reutilizáveis
+- hooks customizados
+- tipagem forte com TypeScript
+- estado global centralizado
+- persistência de carrinho
+- código simples e previsível
 
 ---
 
-## ⚙️ Como rodar localmente
+## Qualidade / Fluxo de desenvolvimento
 
-### 1. Clonar o projeto
+Este projeto utiliza fluxo baseado em Pull Request:
+
+- 🚫 proibido commit direto na `main`
+- ✅ merge liberado somente após Actions aprovadas
+- ✅ CI automática via GitHub Actions
+- ✅ Preview Deploy automático via Vercel
+- ✅ link do preview comentado automaticamente no Pull Request
+
+Arquivo de workflow:
 
 ```bash
-git clone <url-do-repositorio>
+.github/workflows/ci.front.yml
 ```
 
-### 2. Acessar a pasta
+Objetivo:
+
+Garantir previsibilidade antes de produção e manter qualidade mínima de entrega.
+
+---
+
+## Dados mockados
+
+Durante o desenvolvimento foi utilizado JSON Server conforme proposta do desafio.
+
+Para deploy/produção, a fonte de dados foi adaptada para JSON estático:
 
 ```bash
-cd react-store
+public/data/products.json
 ```
 
-### 3. Instalar dependências
+Isso mantém simplicidade, previsibilidade e elimina dependência de backend externo.
+
+---
+
+## Rodando localmente
+
+Instale dependências:
 
 ```bash
 npm install
 ```
 
-### 4. Rodar o projeto
+Execute:
 
 ```bash
 npm run dev
 ```
 
-A aplicação estará disponível em:
+Acesse:
 
-```
+```bash
 http://localhost:5173
 ```
 
 ---
 
-## 🗄️ Fonte de dados
+## Considerações
 
-O projeto utiliza dados mockados estáticos:
+Além dos requisitos obrigatórios do desafio, foram adicionadas melhorias como:
 
-```txt
-public/data/products.json
-```
+- filtros
+- paginação
+- persistência de carrinho
+- preview deploy
+- SEO básico
+- organização arquitetural
+- UX refinada
 
-### Motivos da escolha:
-
-- Simplicidade
-- Zero dependência de backend
-- Deploy facilitado
-- Comportamento previsível
-- Ideal para demonstração técnica front-end
+Buscando entregar uma solução simples, escalável e próxima de um fluxo real de desenvolvimento front-end.
 
 ---
-
-## 🚀 Deploy
-
-Aplicação publicada na **Vercel**, com:
-
-- Build automático
-- SPA routing configurado
-- Suporte a refresh (F5)
-- Assets estáticos otimizados
-
----
-
-## 🔮 Melhorias futuras
-
-- Wishlist
-- Checkout
-- Feedback com toast
-- Skeleton loading
-- Testes unitários
-- Testes E2E
-- Integração com API real
-
----
-
-## 🎯 Objetivo do projeto
-
-Demonstrar habilidades em:
-
-- Arquitetura front-end
-- Componentização
-- Gerenciamento de estado
-- Persistência de dados
-- Roteamento
-- Responsividade
-- Experiência do usuário
-- Boas práticas de código
-````
