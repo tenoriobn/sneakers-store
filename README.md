@@ -20,11 +20,7 @@ Toda Pull Request gera automaticamente um deploy preview via Vercel para valida√
 
 ## Screenshot
 
-<!-- Adicione uma imagem do projeto aqui -->
-
-```md
 ![Preview do projeto](./public/images/preview.png)
-```
 
 ---
 
